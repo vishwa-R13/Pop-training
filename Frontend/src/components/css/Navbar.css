@@ -5,7 +5,7 @@
 nav{
     display: flex;
     list-style-type: none;
-    background: rgb(59, 236, 169);
+    background:chartreuse;
     padding: 8px;
     justify-content: space-evenly;
     font-size: large;

@@ -1,15 +1,15 @@
-import { useState, UseMemo } from "react";
+import { useState, useMemo } from "react";
 
 function slowFunction(num){
-    for(var i=0;i<1000000000000;i++){}
+    for(var i=0;i<50000;i++){}
     return num*2
 }
-const useMemo = () => {
+const UseMemo = () => {
   var [number, setNumber] = useState(0);
   var [theme, settheme] = useState(false);
   var styling = {
-    background: theme ? "cyan" : "crimson",
-    color: theme ? "black" : "white",
+    background: theme ? "cyan" : "blue",
+    color: theme ? "black" : "ghostwhite",
   };
 
   var doublingUpANumber = useMemo(()=>{
@@ -17,12 +17,12 @@ const useMemo = () => {
   },[number])
   return (
     <div style={styling}>
-      <button onClick={() => settheme(!theme)}>toggle theme</button>
+      <button onClick ={() => settheme(!theme)}>toggle theme</button>
       <h1>This is UseMemo example</h1>
       Number Box:{" "}
       <input
         type="number"
-        value={Number}
+        value={number}
         onChange={(e) => setNumber(e.target.value)}
       />
       <h2>the number is {number}</h2>
