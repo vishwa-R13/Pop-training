@@ -1,0 +1,12 @@
+/* *{
+    text-decoration: none;
+    margin: 0;   
+} */
+nav{
+    display: flex;
+    list-style-type: none;
+    background: rgb(59, 236, 169);
+    padding: 8px;
+    justify-content: space-evenly;
+    font-size: large;
+}

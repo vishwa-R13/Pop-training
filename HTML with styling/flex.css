@@ -1,0 +1,78 @@
+@media screen and (min-width:300px){
+    header{
+        background-color:palevioletred;
+    }
+    nav{
+        display: flex;
+        /* flex-direction: column; */
+        list-style: none;
+        justify-content: space-evenly;
+        /* flex-direction: column; */
+        background-color: palevioletred;
+        padding: 10px;
+    }
+    
+    .link{
+        text-decoration: none;
+        color: #fff;
+        padding: 5px;
+    }
+    
+    body{
+        margin: 0;
+    }
+    .link:hover{
+        color:crimson;
+        background-color: whitesmoke;
+        border-radius: 10px;
+    }
+}
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /* li{
+        display: inline;
+        padding-right: 5px;
+    } */
+    

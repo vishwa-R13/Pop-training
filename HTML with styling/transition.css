@@ -1,0 +1,57 @@
+.transition{
+    color: cadetblue;
+    background-color: cyan;
+    transition: background-color 2s,color 2s,width 2s ,height 4s,transform 1s;
+    opacity: 1;
+}
+.h{
+    background:aqua;
+}
+.transition:hover{
+    background-color: dimgray;
+    color: cyan;
+    padding : 30px;
+    padding: 30px;
+    height: 100px;
+    width: 300px;
+    transform: rotate(360deg);
+    opacity: 0.9;
+}
+/* 
+@keyframes animationDiv{
+    0%{
+        background-color: aqua;
+        left: 0px;
+        top: 0px;
+    }
+    25%{
+        background-color: cyan;
+        left: 100px;
+        top: 0px;
+    }
+    50%{
+        background-color: aquamarine;
+        left: 100px;
+        top: 100px;
+        
+    }
+    75%{
+        background-color: cadetblue;
+        left: 0px;
+        top: 100px;
+    }
+    100%{
+        background-color: darkcyan;
+        left: 0px;
+        top: 0px;
+    }
+}
+.animation{
+    animation-name:animationDiv;
+    position: relative;
+    background-color: coral;
+    height: 100px;
+    width: 100px;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+} */

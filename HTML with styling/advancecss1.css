@@ -1,0 +1,20 @@
+h1{
+    margin-top: 10px;
+}
+.fixed-position{
+    position: fixed;
+    background-color: darkgreen;
+    text-align:center;
+    margin-top: -8px;
+    margin-left: -10px;
+    padding: 5px;
+    width: 1920px;
+}
+
+.box-model{
+    padding: 10px;
+    background-color: cadetblue;
+    border: solid 5px chartreuse;
+    margin: 5px;
+
+}
