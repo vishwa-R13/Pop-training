@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../components/css/Navbar.css";
 // import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  var [dropdown, showDropdown] = useState(false);
   return (
     <header>
       <nav>

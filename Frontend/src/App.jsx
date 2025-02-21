@@ -10,7 +10,7 @@ import UseEffectAPI from "../src/components/functional/Hook/UseEffectAPI.jsx"
 import UseState from "../src/components/functional/Hook/UseState.jsx"
 import UseRef from "../src/components/functional/Hook/UseRef.jsx"
 import UseMemo from "../src/components/functional/Hook/UseMemo.jsx"
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom" ;
 
 const App=()=> {
   return (
