@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import "../components/css/Navbar.css";
 // import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  var [dropdown, showDropdown] = useState(false);
+  // var [dropdown, showDropdown] = useState(false);
   return (
     <header>
       <nav>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/" className="link">
+            Home
+          </Link>
         </li>
         <li>
-          <Link to="/About">About</Link>
+          <Link to="/About" className="link">
+            About
+          </Link>
         </li>
         <div>
           <li>
-            <Link to="/Hook">Hook</Link>
+            <Link to="/Hook" className="link">
+              Hook
+            </Link>
           </li>
           <ul style={{ textDecoration: "none" }}>
             <li>
@@ -35,13 +41,43 @@ const Navbar = () => {
             <li>
               <Link to="/um">UseMemo</Link>
             </li>
+            <li>
+              <Link to="/umz">UseMemoize </Link>
+            </li>
+            <li>
+              <Link to="/ucb">UseCallback</Link>
+            </li>
           </ul>
         </div>
         <li>
-          <Link to="/Contact">Contact</Link>
+          <Link to="/hoc" className="link">
+            Hoc
+          </Link>
+        </li>
+        {/* <div>
+          <ol>
+            <li>
+              <Link to="/memo" className="link">
+                Memo
+              </Link>
+              <Link to="/lazy" className="link">
+                LazyComp
+              </Link>
+            </li>
+          </ol>
+        </div> */}
+        <li>
+          
         </li>
         <li>
-          <Link to="/SignUp">SignUp</Link>
+          <Link to="/Contact" className="link">
+            Contact
+          </Link>
+        </li>
+        <li>
+          <Link to="/Signup" className="link">
+            SignUp
+          </Link>
         </li>
       </nav>
     </header>
