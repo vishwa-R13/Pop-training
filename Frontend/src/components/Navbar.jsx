@@ -7,7 +7,7 @@ const Navbar = () => {
   // var [dropdown, showDropdown] = useState(false);
   return (
     <header>
-      <nav>
+      <nav >
         <li>
           <Link to="/" className="link">
             Home
@@ -18,15 +18,15 @@ const Navbar = () => {
             About
           </Link>
         </li>
-        <div>
+        <div className="dropdown">
           <li>
             <Link to="/Hook" className="link">
               Hook
             </Link>
           </li>
-          <ul style={{ textDecoration: "none" }}>
-            <li>
-              <Link to="/ue">UseEffect</Link>
+          <ul className='dropdown-list' style={{ textDecoration: "none" }} >
+            <li className="dropdown-link">
+              <Link to="/ue" className="link">UseEffect</Link>
             </li>
             <li>
               <Link to="/us">UseState</Link>
