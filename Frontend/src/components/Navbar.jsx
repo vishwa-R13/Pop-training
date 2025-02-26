@@ -54,20 +54,25 @@ const Navbar = () => {
             Hoc
           </Link>
         </li>
-        {/* <div>
+        <div>
+          <span className="link">Memoization</span>
           <ol>
             <li>
               <Link to="/memo" className="link">
                 Memo
               </Link>
+              </li>
+              <li>
               <Link to="/lazy" className="link">
                 LazyComp
               </Link>
             </li>
           </ol>
-        </div> */}
+        </div>
         <li>
-          
+          <Link to="/res" className="link">
+            ContextAPI
+          </Link>
         </li>
         <li>
           <Link to="/Contact" className="link">

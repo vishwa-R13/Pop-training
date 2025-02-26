@@ -13,3 +13,4 @@ const StudentResult = () => {
   );
 };
 export default StudentResult;
+

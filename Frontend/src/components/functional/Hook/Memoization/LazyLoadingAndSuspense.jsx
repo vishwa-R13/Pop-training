@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
-const LazyComp = lazy(()=>import ("../Signup.jsx"))
-const LazyLoadingAndSuspense = () => {
+const LazyComp = lazy(() => import("../../Signup"));
+  const LazyLoadingAndSuspense = () => {
   return (
     <div>
       <Suspense fallback={<h1>Loading...</h1>}>
