@@ -1,6 +1,28 @@
-function Login(){
-    return (<div>
-        <h1 style={{textAlign:"center"}}>Login Page</h1>
-    </div>)
+import { useState } from "react";
+import { Link } from "react-router-dom";
+function Login() {
+  // const [username,setUN] = useState("");
+  // const [pass,setpass] = useState("");
+  return (
+    <section>
+      <h1 style={{ textAlign: "center" }}>Login Page</h1>
+      <form action="/">
+        <label htmlFor="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+        required/>
+        <br /> <br />
+        <label htmlFor="password">Password : </label>
+        <input
+          type="password"
+          id="password"
+        required/>{" "}
+        <br /> <br />
+      <button type="submit">Login</button>
+      </form>
+      <p>Already as account <Link to='/Signup'>SignUp</Link> </p>
+    </section>
+  );
 }
 export default Login;

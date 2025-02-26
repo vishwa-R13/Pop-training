@@ -80,8 +80,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/Signup" className="link">
-            SignUp
+          <Link to="/Login" className="link">
+          Login
           </Link>
         </li>
       </nav>
