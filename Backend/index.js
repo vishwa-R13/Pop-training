@@ -7,7 +7,7 @@ const cors = require("cors");
 // const jwt = require("")
 const app = express();
 app.use(cors());
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 dotenv.config();
 app.use(express.json());
