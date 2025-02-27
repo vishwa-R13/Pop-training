@@ -1,28 +1,53 @@
-import { useState } from "react";
-import Home from '../functional/Home'
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 function Login() {
-  // const [username,setUN] = useState("");
-  // const [pass,setpass] = useState("");
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    var req = await axios.post("https://sjit2025mern.onrender.com/login", {
+      email,
+      password,
+    });
+    var isLoginSuccessful = req.data.isLoggedIn;
+    if (isLoginSuccessful) {
+      alert(req.data.message);
+      navigate("/");
+    } else {
+      alert(req.data.message);
+    }
+  };
   return (
     <section>
-      <h1 style={{ textAlign: "center" }}>Login Page</h1>
-      <form action={<Link to='/Home'></Link>}>
-        <label htmlFor="email">Email:</label>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        Email:{" "}
         <input
           type="email"
           id="email"
-        required/>
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
         <br /> <br />
-        <label htmlFor="password">Password : </label>
+        Password:{" "}
         <input
           type="password"
           id="password"
-        required/>{" "}
-        <br /> <br />
-      <button type="submit">Login</button>
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <br /><br />
+        <button type="submit">Login</button>
       </form>
-      <p>Already as account <Link to='/Signup'>SignUp</Link> </p>
+      <p>
+        Create an account?<Link to="/signup">Signup</Link>
+      </p>
     </section>
   );
 }
