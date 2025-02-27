@@ -4,16 +4,17 @@ const dotenv = require("dotenv");
 const signup = require("./models/signupSchema");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+// const jwt = require("")
 const app = express();
 app.use(cors());
-const PORT = 3002;
+const PORT = 3003;
 
 dotenv.config();
 app.use(express.json());
 mdb
   .connect(process.env.MONGODB_URL) // if it doesn't connect with localhost replace it with 127.0.0.1 ip address
   .then(() => {
-    console.log("MDB connection succesful");
+    console.log("MDB connection successful");
   })
   .catch((err) => {
     console.log("Check your connection string", err);
@@ -30,25 +31,25 @@ app.get("/", (req, res) => {
 app.post("/signup", async (req, res) => {
   try {
     console.log(req.body);
-    const { firstName, lastName, email, password, phoneNumber } = req.body;
+    const { FirstName, LastName, email, password, phoneNumber } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
     const newSignup = new signup({
-      FirstName: firstName,
-      LastName: lastName,
+      FirstName: FirstName,
+      LastName: LastName,
       phoneNumber: phoneNumber,
       password: hashedPassword,
-      email: email,
+      email: email
     });
     newSignup.save();
-    console.log("Signup Succesful");
-    res.status(201).json({ message: "Signup Succsesful", isSignup: true });
+    console.log("Signup Successful");
+    res.status(201).json({ message: "Signup Successful", isSignup: true });
   } catch (error) {
     console.error("Signup Error:", error);
-    res.status(400).json({ message: "Signup Unsuccsesful", isSignup: false });
+    res.status(400).json({ message: "Signup Unsuccessful", isSignup: false });
   }
 });
 
-app.get("/getsignupdet", async (req, res) => {
+app.get("/getsignupdate", async (req, res) => {
   const Signup = await signup.find(); //Signup.find()
   console.log(Signup);
   res.json("signup details fetched");

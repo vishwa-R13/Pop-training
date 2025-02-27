@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Home from '../functional/Home'
 import { Link } from "react-router-dom";
 function Login() {
   // const [username,setUN] = useState("");
@@ -6,7 +7,7 @@ function Login() {
   return (
     <section>
       <h1 style={{ textAlign: "center" }}>Login Page</h1>
-      <form action="/">
+      <form action={<Link to='/Home'></Link>}>
         <label htmlFor="email">Email:</label>
         <input
           type="email"

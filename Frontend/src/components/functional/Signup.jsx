@@ -11,7 +11,7 @@ function Signup() {
   const [phoneNumber, setPN] = useState(0);
   const handleSignup = async(event) => {
     event.preventDefault();
-    const req = await axios.post("http://localhost:3002/Signup", {
+    const req = await axios.post("http://localhost:3003/Signup", {
       FirstName: firstName,
       LastName: lastName,
       phoneNumber: phoneNumber,
@@ -67,6 +67,7 @@ function Signup() {
           value={password}
           onChange={(e) => setpass(e.target.value)}
         /> <br /> <br />
+        <button type="submit">Signup</button>
       </form>
       <p>
       Already having an account? <Link to="/Login">Login</Link>
