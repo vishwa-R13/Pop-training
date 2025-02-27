@@ -4,13 +4,43 @@ const dotenv = require("dotenv");
 const signup = require("./models/signupSchema");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
-// const jwt = require("")
+const jwt = require("jsonwebtoken");
 const app = express();
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://pop-training-omega.vercel.app/',
+];
+app.use(
+  cors({
+    origin:allowedOrigins,
+    credentials: true,
+    methods: ["GET", "POST"],
+  })
+);
 app.use(cors());
-const PORT = process.env.PORT || 3003;
-
-dotenv.config();
 app.use(express.json());
+
+const PORT = process.env.PORT || 3002;
+dotenv.config();
+
+const verifyTok = (req,res,next) =>{
+  console.log("Middleware Check");
+  const token = req.headers.authorization
+  if(!token){
+    res.json("Request Denied")
+  }
+  try{
+    console.log(token)
+    const payload = jwt.verify(token,process.env.SECRET_KEY)
+    console.log(payload.firstname)
+    firstname = payload.firstname
+    next()
+  }
+  catch(err){
+    res.send("Either token is expired/ Token is itself wrong")
+  }
+}
+
 mdb
   .connect(process.env.MONGODB_URL) // if it doesn't connect with localhost replace it with 127.0.0.1 ip address
   .then(() => {
@@ -24,8 +54,8 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome to Backend Server </h1>");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile("D:/mern stack/Backend/index.js");
+app.get("/static", verifyTok,(req, res) => {
+  res.sendFile("/mern stack/Backend/index.js");
 });
 
 app.post("/signup", async (req, res) => {
@@ -38,7 +68,7 @@ app.post("/signup", async (req, res) => {
       LastName: LastName,
       phoneNumber: phoneNumber,
       password: hashedPassword,
-      email: email
+      email: email,
     });
     newSignup.save();
     console.log("Signup Successful");
@@ -49,26 +79,33 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.get("/getsignupdate", async (req, res) => {
-  const Signup = await signup.find(); //Signup.find()
-  console.log(Signup);
-  res.json("signup details fetched");
+app.get("/getsignupdate",verifyTok, async (req, res) => {
+  const signup = await Signup.find(); //Signup.find()
+  console.log(signup);
+  res.send("signup details fetched");
 });
 
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const existingUser = await signup.findOne({ email: email });
+    const existingUser = await Signup.findOne({ email: email });
     console.log(existingUser);
     // res.json({message:"Login Fetched"})
     if (existingUser) {
+      const payload = {
+        Firstname: existingUser.FirstName,
+        email: existingUser.email,
+      };
       const isValidPassword = await bcrypt.compare(
         password,
         existingUser.password
       );
       console.log(isValidPassword);
       if (isValidPassword) {
-        res.status(201).json({ message: "Login Succesful", isLoggedIn: true });
+        const token = jwt.sign(payload, process.env.SECRET_KEY, {
+          expiresIn: "30m"
+        });
+        res.status(201).json({ message: "Login Succesful", isLoggedIn: true,token: token, });
       } else {
         res
           .status(201)
@@ -79,7 +116,7 @@ app.post("/login", async (req, res) => {
         .status(201)
         .json({ message: "User not found, Signup first", isLoggedIn: false });
     }
-    res.json("Login fetched");
+    // res.json("Login fetched");
   } catch (error) {
     console.log("Login error");
     res
