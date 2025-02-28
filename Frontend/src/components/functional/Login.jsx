@@ -9,7 +9,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const handleLogin = async (event) => {
     event.preventDefault();
-    var req = await axios.post("https://sjit2025mern.onrender.com/login", {
+    var req = await axios.post("https://pop-training-hprf.onrender.com/login", {
       email,
       password,
     });
